@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>他克莫司治疗药物监测网络服务端</title>
+<link href="Style/css/login.css" tppabs="http://www.poppk-beijing.org/Style/css/login.css" rel="stylesheet" type="text/css" />
+<link href="Style/css/reg.css" tppabs="http://www.poppk-beijing.org/Style/css/reg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="Style/js/CheckUserName.js" tppabs="http://www.poppk-beijing.org/Style/js/CheckUserName.js"></script>
+<script language="javascript"> 
+function regCheck(objForm){
+	if(objForm.username.value ==""){
+		objForm.username.focus();
+		alert("用户名不能为空！");
+		return false;
+	}
+	if(objForm.password.value==""){
+		objForm.password.focus();
+		alert("登录密码不能为空！");
+		return false;
+	}
+	if(objForm.password2.value!=objForm.password.value){
+		objForm.password2.focus();
+		alert("两次密码输入不一致！");
+		return false;
+	}
+	if(objForm.checkcode.value==""){
+		objForm.checkcode.focus();
+		alert("验证码不能为空！");
+		return false;
+	}
+	
+	return true;
+}
+</script>
+</head>
+
+<body onload="document.imgcode.src='servlet/randomCode?'+Math.random();">
+<div id="container">
+<div id="top"></div>
+
+<h3>会员注册</h3>
+<form id="frmreg" name="frmreg" method="post" action="http://www.poppk-beijing.org/servlet/regedit.jsp?type=individual" onsubmit="return regCheck(this);return false;">
+  <table style="width:630px;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20%" align="right">用户名：</td>
+      <td width="80%"><input name="username" type="text" id="username" size="7" maxlength="20" onblur="CheckUserName(this,'individual')" /><b>*</b> <span id="tipsmsg">帐号必须是字母、数字或者下划线，最多不要超过20个字符。</span> </td>
+    </tr>
+    <tr>
+      <td align="right">姓名：</td>
+      <td><input name="truename" type="text" id="truename" size="7" maxlength="20" /><b>*</b></td>
+    </tr>  
+    <tr>
+      <td align="right">常用邮箱：</td>
+      <td><input name="email" type="text" id="email" maxlength="30" /><b>*</b> (如：happy@163.com)</td>
+    </tr>      
+    <tr>
+      <td align="right">登录密码：</td>
+      <td><input name="password" type="password" id="password" size="10" maxlength="16"/><b>*</b></td>
+    </tr>
+    <tr>
+      <td align="right">确认密码：</td>
+      <td><input name="password2" type="password" id="password2" size="10" maxlength="16"/><b>*</b></td>
+    </tr>
+    <!--tr>
+      <td align="right">密码提示问题：</td>
+      <td><input name="pwdQuestion" type="text" id="pwdQuestion" size="20" maxlength="50" /><b>*</b></td>
+    </tr>
+    <tr>
+      <td align="right">密码提示答案：</td>
+      <td><input name="pwdAnswer" type="text" id="pwdAnswer" size="25" maxlength="100" /><b>*</b></td>
+    </tr-->
+    <tr>
+      <td align="right">工作单位：</td>
+      <td><input name="workUnit" type="text" id="workUnit" size="25" maxlength="100" /><b>*</b></td>
+    </tr>   
+    <tr>
+      <td align="right">职称：</td>
+      <td><input name="position" type="text" id="position" size="25" maxlength="100" /><b>*</b></td>
+    </tr>  
+	    <tr>
+      <td align="right" valign="bottom">验证码：</td>
+      <td valign="bottom"><input type="text" name="checkcode" id="checkcode" maxlength="4" size="4" />
+          <img id="imgcode" name="imgcode" src="#" alt="验证码,看不清楚?请点击刷新" onClick="javascript:this.src='servlet/randomCode?'+Math.random()"/></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+      <textArea cols="300" rows="50" style=" border:1px solid #000;padding:10px; margin:20px 0 1px 30px; height:300px; width:600px;">
+      治疗药物监测软件C-TDM试用知情同意书
+
+第一部分  知情部分
+1．软件研制背景
+C-TDM为北京大学药学院针对中国病人人群研制开发的治疗药物监测软件， 于2010年起置于网站（WWW.POPPK-BEIJING.ORG）服务器上供各医院试用。
+软件C-TDM的研制是为了推进我国的临床个体化给药，降低因为可能的剂量不当而导致的毒副作用发生风险。
+本课题的前期工作为分别以目前临床需要进行治疗药物监测的约十种药物为对象，面向中国患者人群，采集尽可能多的临床血药浓度监测数据，结合病人的人口统计学、临床生理生化指标以及合并用药情况信息，建立群体药物动力学模型，并在此基础上开发出软件C-TDM。
+
+2. 软件C-TDM的研制与试用：
+软件在网络服务器上运行。运行中要求使用者输入病人的相关信息，然后软件根据前期建立的群体药物动力学模型，依信息量的多寡进行群体层次*，亚群体层次**或个体层次***不同给药方案下的血药浓度水平的预测。使用者可以根据这些结果进行剂量的调整，已达到给药个体化的目的。
+	在为临床合理用药提供科学参考的同时，软件的管理者还可以根据在此过程中收集得到的病人信息以及血药浓度水平，对于内置的群体药物动力学模型进行不定期的再优化，提高准确程度与精确程度。
+
+3．参与本研究可能带来的益处
+C-TDM将帮助医生制定针对性更强的个体化给药方案，降低给药的盲目性，降低出现毒副作用的风险，提高整体医疗质量，推广面向中国人群的合理化用药的理念与手段。
+软件目前为无偿试用，不会增加患者或医院的额外负担，同时也将不对试用者和相关患者进行其它形式的补助或酬劳。
+
+4．研究可能带来的风险
+任何模型与实际之间均不可避免地存在偏离，而且临床当中各种已知未知因素会有复杂的相互作用，所以软件C-TDM的预测肯定会存在或大或小的偏差，其给出的建议仅供临床医生作为制定给药方案时的参考。
+
+5．个人隐私的保护：
+C-TDM的使用过程中患者的个人信息将严格保密，只有软件的开发管理者以及患者所属医院的医生可以看到相关的信息。这些信息将只作为血药浓度的预测以及模型的再优化。
+
+6．试用过程中如出现问题，请与北京大学药学院卢炜教授联系（18910970769，北京市学院路38号，北京大学医学部药学楼424室）。
+
+7．参加本研究是自愿的，软件C-TDM的试用者以及相关的患者有自由参加、知情以及同意、以及无需解释随时退出的权利，即使中途退出试验也不会有权益上的损失或影响治疗。
+
+8．研究者或指定的研究人员将对受试者作详细说明，以使其充分了解以上内容，给受试者充分时间考虑并作出是否参加研究的决定。
+
+9．当发现受试软件出现预期以外的临床影响，有必要对知情同意书相关内容进行修改，并经受试者或其法定代理人重新签名确认。
+
+第二部分  同意部分
+1．我已认真阅读该知情同意书，充分知晓了以上内容，同意参加软件C-TDM的试用评价。
+试用者						单位						日期
+
+2． 我已向试用者充分解释和说明了本研究的目的、过程以及受试者参加该试验可能存在的风险和潜在的利益，必要时将回答受试者所有有关问题。
+研究者：卢炜				单位：北京大学药学院		日期：2010-3-22
+ 
+补充说明：
+*: 群体层次的血药浓度水平的预测：根据群体药物动力学原理，群体层次的预测所需的信息量最少。使用者输入给药剂量以及给药间隔后，C-TDM将根据预先建立好的群体模型即时进行浓度的模拟预测，并给出80%置信区间。之后使用者可以根据临床需要调整剂量与间隔，直到达到可以接受的结果。
+
+**: 亚群体层次的血药浓度水平预测：与所需信息量少，涵盖面广但是预测精度较差的群体层次预测不同，亚群体层次的预测除了给药剂量与间隔等信息之外，还需要输入给药对象的人口统计学、临床生理生化指标以及合并用药等各种可能影响药物体内过程的各种信息。依监测药物的不同所需信息的具体内容会有所不同。运行中C-TDM根据群体药物动力学模型，结合这些信息，推算出针对这一特定病人群体的动力学参数，并进行相应的浓度预测，并给出80%置信区间。使用者可以根据临床需要调整剂量与间隔，直到达到可以接受的结果。
+
+***: 个体层次的血药浓度水平预测：在输入具体给药对象的人口统计学、临床生理生化指标以及合并用药信息的同时，还要求输入其服药剂量、时间，以及监测到的血药浓度指标等个体化信息。运行中C-TDM将根据贝叶斯原理推算出病人个体的药物动力学参数，并以之为基础进行血药浓度的预测及其80%置信区间。
+
+由于信息量的逐步增加，从预测精度与针对性的角度上看，个体层次要优于亚群体预测，而亚群体层次的预测又会优于群体层次的预测。
+
+      </textArea>
+      </td>
+    </tr>
+
+    <tr>
+      <td height="45" align="left" style="text-indent:2em;" colspan="2">
+      <input name="chkagreement" type="checkbox" style="border:none" value="true" checked="checked" />
+        我已阅读并同意《使用协议及免责申明》 </td>
+      <td height="45">&nbsp;</td>
+    </tr>
+    <tr height="55">
+      <td></td>
+      <td><input type="submit" class="btn" name="Submit" value="注册" />
+          <input type="reset" class="btn" name="Submit2" value="重置" /></td>
+    </tr>
+  </table>
+</form>
+
+
+<div id="bottom">
+<div class="copyright">北京大学药学院群体药动课题组 &copy; Copyright 2010 All Right Reserved</div>
+</div>
+</div>
+</body>
+</html>
